@@ -529,6 +529,7 @@ namespace
 			<< "  " << prog << " 512 1 5 43000 --pi keccak800\n"
 			<< "  " << prog << " 512 1 5 43000 --pi sneik-f512\n"
 			<< "  " << prog << " 512 1 5 43000 --pi hctr\n"
+			<< "  " << prog << " 512 1 5 43000 --pi feistel --pi-rounds 8\n"
 			<< "  " << prog << " 512 1 5 43000 --no-bob-pi\n"
 			<< "  " << prog << " 512 1 5 43000 --kem eckem\n"
 			<< "  " << prog << " 512 1 5 43000 --threads 4\n"
@@ -641,6 +642,10 @@ namespace
 			else if (argEq(argv[i], "--pi-lambda") && i + 1 < argc)
 			{
 				args.pi.lambda = parseU64(argv[++i], args.pi.lambda);
+			}
+			else if (argEq(argv[i], "--pi-rounds") && i + 1 < argc)
+			{
+				args.pi.rounds = parseU64(argv[++i], args.pi.rounds);
 			}
 			else if (argEq(argv[i], "--no-bob-pi") || argEq(argv[i], "--bob-no-pi"))
 			{

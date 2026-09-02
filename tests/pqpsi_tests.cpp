@@ -135,6 +135,8 @@ namespace
                 args.rb.bandWidth = parseU64(argv[++i], args.rb.bandWidth);
             else if (argEq(argv[i], "--pi") && i + 1 < argc)
                 setPi(args.pi, argv[++i]);
+            else if (argEq(argv[i], "--pi-rounds") && i + 1 < argc)
+                args.pi.rounds = parseU64(argv[++i], args.pi.rounds);
             else if (argEq(argv[i], "--pi-lambda") && i + 1 < argc)
                 args.pi.lambda = parseU64(argv[++i], args.pi.lambda);
             else if (argEq(argv[i], "--no-bob-pi") || argEq(argv[i], "--bob-no-pi"))
@@ -739,7 +741,7 @@ namespace
     {
         std::cout
             << "Usage\n"
-            << "  " << prog << " pqpsi-rbokvs [setSize] [warmups] [rounds] [portBase] [--hits v] [--rb-eps v] [--rb-w v] [--rb-cols v] [--rb-lambda v] [--kem obf-mlkem|eckem] [--pi conspi|hctr|xoodoo|keccak800|keccak1600|keccak1600-12|sneik-f512] [--no-bob-pi] [--threads v] [--channels v] [--single-thread|--multi-thread]\n"
+            << "  " << prog << " pqpsi-rbokvs [setSize] [warmups] [rounds] [portBase] [--hits v] [--rb-eps v] [--rb-w v] [--rb-cols v] [--rb-lambda v] [--kem obf-mlkem|eckem] [--pi conspi|hctr|feistel|xoodoo|keccak800|keccak1600|keccak1600-12|sneik-f512] [--pi-rounds v] [--no-bob-pi] [--threads v] [--channels v] [--single-thread|--multi-thread]\n"
             << "  " << prog << " rbokvs [setSize] [eps] [w] [rounds] [--threads v] [--single-thread|--multi-thread]\n"
             << "  " << prog << " hctr2\n"
             << "  " << prog << " sneik\n"

@@ -210,7 +210,8 @@ namespace
             << "  --rb-cols <v>\n"
             << "  --rb-w <v>\n"
             << "  --kem <obf-mlkem|eckem>\n"
-            << "  --pi <conspi|hctr|xoodoo|keccak800|keccak1600|keccak1600-12|sneik-f512>\n"
+            << "  --pi <conspi|hctr|feistel|xoodoo|keccak800|keccak1600|keccak1600-12|sneik-f512>\n"
+            << "  --pi-rounds <v>\n"
             << "  --no-bob-pi\n"
             << "  --pi-lambda <v>\n"
             << "  --threads <v>\n"
@@ -266,6 +267,10 @@ namespace
             else if (argEq(argv[i], "--pi-lambda") && i + 1 < argc)
             {
                 args.pi.lambda = parseU64(argv[++i], args.pi.lambda);
+            }
+            else if (argEq(argv[i], "--pi-rounds") && i + 1 < argc)
+            {
+                args.pi.rounds = parseU64(argv[++i], args.pi.rounds);
             }
             else if (argEq(argv[i], "--no-bob-pi") || argEq(argv[i], "--bob-no-pi"))
             {

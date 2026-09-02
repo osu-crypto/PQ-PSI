@@ -132,8 +132,9 @@ namespace
 			<< "  --channels <n>      network channels, default worker threads, capped by workers\n"
 			<< "  --single-thread     force one worker thread per party\n"
 			<< "  --multi-thread      enable worker threads per party\n"
-			<< "  --pi <name>         hctr, xoodoo, keccak1600, keccak1600-12, sneik-f512, ...\n"
+			<< "  --pi <name>         hctr, feistel, xoodoo, keccak1600, keccak1600-12, sneik-f512, ...\n"
 			<< "  --pi-lambda <l>     ConsPi lambda, default 128\n"
+			<< "  --pi-rounds <n>     Feistel rounds, default 8\n"
 			<< "  --no-bob-pi         skip permutation for Bob/party1 OKVS2\n"
 			<< "  --kem <name>        obf-mlkem or eckem\n";
 	}
@@ -212,6 +213,10 @@ namespace
 			else if (argEq(a, "--pi-lambda"))
 			{
 				args.pi.lambda = parseU64(need("--pi-lambda"), args.pi.lambda);
+			}
+			else if (argEq(a, "--pi-rounds"))
+			{
+				args.pi.rounds = parseU64(need("--pi-rounds"), args.pi.rounds);
 			}
 			else if (argEq(a, "--no-bob-pi") || argEq(a, "--bob-no-pi"))
 			{

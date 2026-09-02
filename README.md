@@ -146,7 +146,8 @@ Useful flags:
 | Flag | Default | Notes |
 | --- | --- | --- |
 | `--kem obf-mlkem\|eckem` | `obf-mlkem` | KEM choice |
-| `--pi hctr\|keccak1600\|keccak1600-12\|keccak800\|sneik-f512\|xoodoo` | `hctr` | permutation choice |
+| `--pi hctr\|feistel\|keccak1600\|keccak1600-12\|keccak800\|sneik-f512\|xoodoo` | `hctr` | permutation choice |
+| `--pi-rounds <n>` | `8` | Feistel round count |
 | `--bob-pi` | off | non-optimized protocol; enable Bob's second permutation |
 | `--no-bob-pi` | on | optimized protocol; no Bob second permutation |
 | `--threads 4` | `4` | worker threads per party |
@@ -235,6 +236,7 @@ the Keccak and SNEIK entries below are instantiations of it.
 | Name            | Notes                             |
 | --------------- | --------------------------------- |
 | `hctr`          | AES-128-HCTR2                     |
+| `feistel`       | SHAKE256 balanced Feistel, configurable rounds |
 | `keccak1600`    | ConsPi, Keccak-f[1600], 24 rounds |
 | `keccak1600-12` | ConsPi, Keccak-f[1600], 12 rounds |
 | `keccak800`     | ConsPi, Keccak-f[800]             |

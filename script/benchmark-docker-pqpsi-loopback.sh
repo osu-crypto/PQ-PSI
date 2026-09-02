@@ -89,6 +89,7 @@ SAMPLE_DIR="${SAMPLE_DIR:-}"
 KEM="${KEM:-obf-mlkem}"
 PI="${PI:-hctr}"
 PI_LAMBDA="${PI_LAMBDA:-128}"
+PI_ROUNDS="${PI_ROUNDS:-8}"
 BOB_PI="${BOB_PI:-0}"
 HITS="${HITS:-}"
 RB_LAMBDA="${RB_LAMBDA:-40}"
@@ -199,7 +200,7 @@ if [[ -n "$RB_COLS" ]]; then
     RB_ARGS+=(--rb-cols "$RB_COLS")
 fi
 RB_ARGS+=(--rb-lambda "$RB_LAMBDA")
-RB_ARGS+=(--pi "$PI" --pi-lambda "$PI_LAMBDA" --kem "$KEM")
+RB_ARGS+=(--pi "$PI" --pi-lambda "$PI_LAMBDA" --pi-rounds "$PI_ROUNDS" --kem "$KEM")
 if [[ -n "$HITS" ]]; then
     RB_ARGS+=(--hits "$HITS")
 fi

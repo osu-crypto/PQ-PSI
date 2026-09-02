@@ -15,7 +15,7 @@ namespace pqperm
 	class Feistel final : public Perm
 	{
 	public:
-		static constexpr size_t DefaultRounds = 12;
+		static constexpr size_t DefaultRounds = 8;
 
 		explicit Feistel(size_t rounds = DefaultRounds, u8 party = 0)
 			: rounds_(rounds)

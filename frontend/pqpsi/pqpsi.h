@@ -45,6 +45,7 @@ struct PiCfg
 	pqperm::Kind kind = pqperm::Kind::ConsPi;
 	pi::Kind small = pi::Kind::Keccak1600;
 	size_t lambda = 128;
+	size_t rounds = pqperm::Feistel::DefaultRounds;
 	bool bobPi = false;
 };
 
@@ -116,6 +117,7 @@ inline pqperm::Cfg toPermCfg(const PiCfg& pi)
 	cfg.kind = pi.kind;
 	cfg.small = pi.small;
 	cfg.lambda = pi.lambda;
+	cfg.rounds = pi.rounds;
 	return cfg;
 }
 
@@ -126,6 +128,7 @@ inline void setPi(PiCfg& pi, const std::string& text)
 	pi.kind = cfg.kind;
 	pi.small = cfg.small;
 	pi.lambda = cfg.lambda;
+	pi.rounds = cfg.rounds;
 }
 
 inline std::unique_ptr<pqperm::Perm> makePi(const PiCfg& pi, u8 party = 0)

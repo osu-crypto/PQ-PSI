@@ -60,6 +60,10 @@ apply_common_flags() {
                 export PI_LAMBDA="$2"
                 shift 2
                 ;;
+            --pi-rounds)
+                export PI_ROUNDS="$2"
+                shift 2
+                ;;
             --bob-pi)
                 export BOB_PI=1
                 shift

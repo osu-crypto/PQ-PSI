@@ -55,6 +55,7 @@ CHANNELS="${CHANNELS:-}"
 KEM="${KEM:-obf-mlkem}"
 PI="${PI:-hctr}"
 PI_LAMBDA="${PI_LAMBDA:-128}"
+PI_ROUNDS="${PI_ROUNDS:-8}"
 BOB_PI="${BOB_PI:-0}"
 HITS="${HITS:-}"
 RB_LAMBDA="${RB_LAMBDA:-40}"
@@ -148,7 +149,7 @@ if [[ -n "$RB_COLS" ]]; then
     RUN_ARGS+=(--rb-cols "$RB_COLS")
 fi
 RUN_ARGS+=(--rb-lambda "$RB_LAMBDA")
-RUN_ARGS+=(--kem "$KEM" --pi "$PI" --pi-lambda "$PI_LAMBDA")
+RUN_ARGS+=(--kem "$KEM" --pi "$PI" --pi-lambda "$PI_LAMBDA" --pi-rounds "$PI_ROUNDS")
 if [[ -n "$HITS" ]]; then
     RUN_ARGS+=(--hits "$HITS")
 fi

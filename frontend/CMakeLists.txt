@@ -34,6 +34,9 @@ set(SRC_MONOCYPHER
 set(SRC_XOODOO
     ${CMAKE_SOURCE_DIR}/thirdparty/XKCP/lib/low/Xoodoo/plain/Xoodoo-plain.c)
 
+set(SRC_SHAKE
+    ${CMAKE_SOURCE_DIR}/thirdparty/XKCP/Standalone/CompactFIPS202/C/TweetableFIPS202.c)
+
 file(GLOB SRC_OBFMLKEM_MIN
     ${CMAKE_SOURCE_DIR}/frontend/kem/obf-mlkem/backend/*.cpp
     ${CMAKE_SOURCE_DIR}/frontend/kem/obf-mlkem/codec/*.cpp
@@ -42,13 +45,14 @@ file(GLOB SRC_OBFMLKEM_MIN
 file(GLOB SRC_ECKEM_MIN
     ${CMAKE_SOURCE_DIR}/frontend/kem/eckem/*.cpp)
 
-add_executable(frontend.exe ${SRC_FRONTEND} ${SRC_KECCAK} ${SRC_SNEIK} ${SRC_MONOCYPHER} ${SRC_XOODOO})
+add_executable(frontend.exe ${SRC_FRONTEND} ${SRC_KECCAK} ${SRC_SNEIK} ${SRC_MONOCYPHER} ${SRC_XOODOO} ${SRC_SHAKE})
 
 add_executable(construction_permutation_bench
     ${CMAKE_SOURCE_DIR}/frontend/benchmarks/ConstructionPermutation_Bench.cpp
     ${SRC_KECCAK}
     ${SRC_SNEIK}
-    ${SRC_XOODOO})
+    ${SRC_XOODOO}
+    ${SRC_SHAKE})
 
 add_executable(pqpsi_rbokvs_bench
     ${CMAKE_SOURCE_DIR}/frontend/benchmarks/PqPsi_RbOkvs_Bench.cpp
@@ -61,7 +65,8 @@ add_executable(pqpsi_rbokvs_bench
     ${SRC_KECCAK}
     ${SRC_SNEIK}
     ${SRC_MONOCYPHER}
-    ${SRC_XOODOO})
+    ${SRC_XOODOO}
+    ${SRC_SHAKE})
 
 add_executable(pqpsi_party_bench
     ${CMAKE_SOURCE_DIR}/frontend/benchmarks/PqPsi_Party_Bench.cpp
@@ -73,7 +78,8 @@ add_executable(pqpsi_party_bench
     ${SRC_KECCAK}
     ${SRC_SNEIK}
     ${SRC_MONOCYPHER}
-    ${SRC_XOODOO})
+    ${SRC_XOODOO}
+    ${SRC_SHAKE})
 
 add_executable(rbokvs_g_check
     ${CMAKE_SOURCE_DIR}/frontend/benchmarks/RbOkvs_G_Check.cpp)
@@ -89,7 +95,8 @@ add_executable(rbokvs_pqpsi_test
     ${SRC_KECCAK}
     ${SRC_SNEIK}
     ${SRC_MONOCYPHER}
-    ${SRC_XOODOO})
+    ${SRC_XOODOO}
+    ${SRC_SHAKE})
 
 add_executable(pqpsi_tests
     ${CMAKE_SOURCE_DIR}/tests/pqpsi_tests.cpp
@@ -102,7 +109,8 @@ add_executable(pqpsi_tests
     ${SRC_KECCAK}
     ${SRC_SNEIK}
     ${SRC_MONOCYPHER}
-    ${SRC_XOODOO})
+    ${SRC_XOODOO}
+    ${SRC_SHAKE})
 
 
 #############################################
