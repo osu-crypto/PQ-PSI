@@ -1,11 +1,23 @@
-# PQ-PSI
+<div align="center">
+
+# Post-Quantum Private Set Intersection for Small Sets
+
+Junxin Liu, Mike Rosulek, Ni Trieu
+
+Oregon State University, Arizona State University
+
+[**Overview**](#overview) | [**Building**](#building-the-project) | [**Experiments**](#running-the-experiments) | [**Details**](#implementation-details) | [**Third-Party Code**](#third-party-code) | [**Contact**](#author-contact-information) | [**License**](#license)
+
+</div>
+
+## Overview
 
 This repository contains two benchmark code paths:
 
 - `./` is the PQ-PSI implementation.
 - `volepsi/` is our Kyber/VOLE-PSI comparison fork. See `volepsi/README.md` for its build, test, and benchmark commands.
 
-## Requirements
+## Building the Project
 
 Baseline:
 
@@ -32,37 +44,7 @@ sudo apt-get install -y \
   libgmp-dev libsodium-dev
 ```
 
-## Layout
-
-| Path                    | Notes                  |
-| ----------------------- | ---------------------- |
-| `frontend/pqpsi/`       | protocol code          |
-| `frontend/okvs/`        | RB-OKVS                |
-| `frontend/kem/`         | KEM choices            |
-| `frontend/permutation/` | big permutations       |
-| `tests/pqpsi_tests.cpp` | command-line tests     |
-| `frontend/benchmarks/`  | two-process benchmarks |
-| `script/pqpsi.sh`       | main PQ-PSI wrapper     |
-| `volepsi/`              | Kyber/VOLE-PSI fork    |
-
-## Scripts
-
-Use `script/pqpsi.sh` first. The other scripts are kept because they are either
-called by that wrapper or used for RB-OKVS tuning.
-
-| Script | Use |
-| --- | --- |
-| `script/pqpsi.sh` | main test/build/bench entry |
-| `script/check-linux-pqpsi-deps.sh` | Linux dependency check |
-| `script/build-miracl-linux64.sh` | MIRACL build |
-| `script/build-docker-pqpsi-bench.sh` | Docker build |
-| `script/test-rbokvs-pqpsi.sh` | thread-mode test |
-| `script/benchmark-docker-pqpsi-loopback.sh` | two-process benchmark |
-| `script/benchmark-docker-pqpsi.sh` |  wrapper for benchmark |
-| `script/run-pqpsi-loopback-matrix.sh` | benchmark runner |
-
-
-## Start: macOS + Docker
+### Start: macOS + Docker
 
 Use this path on macOS. The built binaries are Linux amd64 binaries, so run
 them through the scripts.
@@ -94,7 +76,7 @@ to a profile that is not running. Switch to the running profile, usually
 CPU pinning is off by default for the Docker benchmark. If you turn it on with
 `PIN_CPUS=1`, make sure the selected CPU ranges exist in the Docker VM.
 
-## Start: Linux
+### Start: Linux
 
 Build:
 
@@ -116,7 +98,9 @@ bash script/pqpsi.sh test process 128 5 --kem obf-mlkem --pi hctr --threads 4
 
 On Linux without Docker, `test process` runs the native two-process path.
 
-## Test Modes
+## Running the Experiments
+
+### Test Modes
 
 **Wrapper:**
 
@@ -157,7 +141,7 @@ Useful flags:
 | `--rb-eps 0.07` | auto | RB-OKVS expansion |
 | `--rb-w 104` | auto | RB-OKVS band width |
 
-## Benchmarks
+### Benchmarks
 
 Benchmarks use two party processes. This matches the setup used for the paper
 tables. There are two backends:
@@ -219,6 +203,33 @@ Settings:
 
 
 
+## Implementation Details
+
+| Path                    | Notes                  |
+| ----------------------- | ---------------------- |
+| `frontend/pqpsi/`       | protocol code          |
+| `frontend/okvs/`        | RB-OKVS                |
+| `frontend/kem/`         | KEM choices            |
+| `frontend/permutation/` | big permutations       |
+| `tests/pqpsi_tests.cpp` | command-line tests     |
+| `frontend/benchmarks/`  | two-process benchmarks |
+| `script/pqpsi.sh`       | main PQ-PSI wrapper     |
+| `volepsi/`              | Kyber/VOLE-PSI fork    |
+
+Use `script/pqpsi.sh` first. The other scripts are kept because they are either
+called by that wrapper or used for RB-OKVS tuning.
+
+| Script | Use |
+| --- | --- |
+| `script/pqpsi.sh` | main test/build/bench entry |
+| `script/check-linux-pqpsi-deps.sh` | Linux dependency check |
+| `script/build-miracl-linux64.sh` | MIRACL build |
+| `script/build-docker-pqpsi-bench.sh` | Docker build |
+| `script/test-rbokvs-pqpsi.sh` | thread-mode test |
+| `script/benchmark-docker-pqpsi-loopback.sh` | two-process benchmark |
+| `script/benchmark-docker-pqpsi.sh` | benchmark wrapper |
+| `script/run-pqpsi-loopback-matrix.sh` | benchmark runner |
+
 ## KEMs
 
 | Name        | Type         | Row bytes | Notes                                          |
@@ -251,7 +262,7 @@ Synthetic sets. Default `hits = n - 1`.
 - party 0 rewrites `n - hits` items
 - `--hits` overrides the intersection size
 
-## Third-Party Code
+### Third-Party Code
 
 | Component              | Source                                                                     |
 | ---------------------- | -------------------------------------------------------------------------- |
@@ -263,3 +274,11 @@ Synthetic sets. Default `hits = n - 1`.
 | MIRACL                 | https://github.com/miracl/MIRACL                                           |
 | Boost                  | https://www.boost.org                                                      |
 | cryptoTools            | https://github.com/osu-crypto/cryptoTools                                  |
+
+## Author Contact Information
+
+See the paper for author contact details.
+
+## License
+
+See [LICENSE](LICENSE).
