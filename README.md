@@ -17,18 +17,6 @@ This repository contains two benchmark code paths:
 - `./` is the PQ-PSI implementation.
 - `volepsi/` is our Kyber/VOLE-PSI comparison fork. See `volepsi/README.md` for its build, test, and benchmark commands.
 
-## Artifact Quickstart
-
-Use these first:
-
-| Goal | Command |
-| --- | --- |
-| Smoke test | `bash script/pqpsi.sh test process 128 5 --kem obf-mlkem --pi hctr --threads 4` |
-| Paper tables | `bash script/pqpsi.sh matrix build-docker/benchmarks/rbokvs-pqpsi/pqpsi-loopback-matrix.md` |
-| Full benchmark | `RATE=10gbit THREAD_MODE=multi THREADS=4 bash script/pqpsi.sh bench lan-4thread.md` |
-
-The paper-table matrix runs the no-bob-pi protocol only.
-
 ## Building the Project
 
 Baseline:
@@ -109,6 +97,18 @@ bash script/pqpsi.sh test process 128 5 --kem obf-mlkem --pi hctr --threads 4
 ```
 
 On Linux without Docker, `test process` runs the native two-process path.
+
+## Artifact Quickstart
+
+Use these first:
+
+| Goal | Command |
+| --- | --- |
+| Smoke test | `bash script/pqpsi.sh test process 128 5 --kem obf-mlkem --pi hctr --threads 4` |
+| Paper tables | `bash script/pqpsi.sh matrix build-docker/benchmarks/rbokvs-pqpsi/pqpsi-loopback-matrix.md` |
+| Full benchmark | `RATE=10gbit THREAD_MODE=multi THREADS=4 bash script/pqpsi.sh bench lan-4thread.md` |
+
+The paper-table matrix runs the no-bob-pi protocol only.
 
 ## Running the Experiments
 
