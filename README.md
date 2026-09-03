@@ -17,6 +17,18 @@ This repository contains two benchmark code paths:
 - `./` is the PQ-PSI implementation.
 - `volepsi/` is our Kyber/VOLE-PSI comparison fork. See `volepsi/README.md` for its build, test, and benchmark commands.
 
+## Artifact Quickstart
+
+Use these first:
+
+| Goal | Command |
+| --- | --- |
+| Smoke test | `bash script/pqpsi.sh test process 128 5 --kem obf-mlkem --pi hctr --threads 4` |
+| Paper tables | `bash script/pqpsi.sh matrix build-docker/benchmarks/rbokvs-pqpsi/pqpsi-loopback-matrix.md` |
+| Full benchmark | `RATE=10gbit THREAD_MODE=multi THREADS=4 bash script/pqpsi.sh bench lan-4thread.md` |
+
+The paper-table matrix runs the no-bob-pi protocol only.
+
 ## Building the Project
 
 Baseline:
@@ -216,19 +228,22 @@ Settings:
 | `script/pqpsi.sh`       | main PQ-PSI wrapper     |
 | `volepsi/`              | Kyber/VOLE-PSI fork    |
 
-Use `script/pqpsi.sh` first. The other scripts are kept because they are either
-called by that wrapper or used for RB-OKVS tuning.
+Use `script/pqpsi.sh` first. It is the main entry point for test and bench.
+The loopback matrix script is the other main entry point for paper tables.
 
-| Script | Use |
+| Main entry point | Use |
 | --- | --- |
-| `script/pqpsi.sh` | main test/build/bench entry |
+| `script/pqpsi.sh` | test and benchmark wrapper |
+| `script/run-pqpsi-loopback-matrix.sh` | paper-table benchmark runner |
+
+| Helper script | Use |
+| --- | --- |
 | `script/check-linux-pqpsi-deps.sh` | Linux dependency check |
 | `script/build-miracl-linux64.sh` | MIRACL build |
 | `script/build-docker-pqpsi-bench.sh` | Docker build |
 | `script/test-rbokvs-pqpsi.sh` | thread-mode test |
 | `script/benchmark-docker-pqpsi-loopback.sh` | two-process benchmark |
 | `script/benchmark-docker-pqpsi.sh` | benchmark wrapper |
-| `script/run-pqpsi-loopback-matrix.sh` | benchmark runner |
 
 ## KEMs
 

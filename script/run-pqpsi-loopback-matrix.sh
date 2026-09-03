@@ -20,7 +20,7 @@ EXISTING_DIR="${EXISTING_DIR:-}"
 EXISTING_RESULTS_TSV="${EXISTING_RESULTS_TSV:-}"
 ROUND_STEPS="${ROUND_STEPS:-40 60 80 100}"
 TRIM_GAP_PCT="${TRIM_GAP_PCT:-2.0}"
-BOB_PI_ORDER="${BOB_PI_ORDER:-0 1}"
+BOB_PI_ORDER="${BOB_PI_ORDER:-0}"
 
 SIZES="${SIZES:-128 256 512 1024}"
 WARMUPS="${WARMUPS:-3}"
@@ -219,6 +219,7 @@ ensure_idle
 
 protocols=(
     "hctr obf-mlkem hctr"
+    "feistel obf-mlkem feistel"
     "nonpq eckem xoodoo"
     "sneik-f512 obf-mlkem sneik-f512"
     "keccak1600-12 obf-mlkem keccak1600-12"
